@@ -20,6 +20,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ### 1. Prefect.io
 
+🔗 https://www.prefect.io/
+
 | Aspect | Details |
 |--------|---------|
 | **License** | Apache 2.0 (open source core) |
@@ -48,6 +50,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 ---
 
 ### 2. Apache Airflow
+
+🔗 https://airflow.apache.org/
 
 | Aspect | Details |
 |--------|---------|
@@ -79,6 +83,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ### 3. Luigi
 
+🔗 https://github.com/spotify/luigi
+
 | Aspect | Details |
 |--------|---------|
 | **License** | Apache 2.0 |
@@ -108,6 +114,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 ---
 
 ### 4. Dagster
+
+🔗 https://dagster.io/
 
 | Aspect | Details |
 |--------|---------|
@@ -139,6 +147,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ### 5. Kestra
 
+🔗 https://kestra.io/
+
 | Aspect | Details |
 |--------|---------|
 | **License** | Apache 2.0 (fully open source) |
@@ -168,6 +178,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 ---
 
 ### 6. Temporal
+
+🔗 https://temporal.io/
 
 | Aspect | Details |
 |--------|---------|
@@ -200,6 +212,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ### 7. Nextflow
 
+🔗 https://www.nextflow.io/
+
 | Aspect | Details |
 |--------|---------|
 | **License** | Apache 2.0 |
@@ -231,6 +245,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ### 8. StackStorm
 
+🔗 https://stackstorm.com/
+
 | Aspect | Details |
 |--------|---------|
 | **License** | Apache 2.0 |
@@ -261,6 +277,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 ---
 
 ### 9. n8n
+
+🔗 https://n8n.io/
 
 | Aspect | Details |
 |--------|---------|
@@ -295,6 +313,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ### Flyte (Lyft)
 
+🔗 https://flyte.org/
+
 | Aspect | Details |
 |--------|---------|
 | **License** | Apache 2.0 |
@@ -309,6 +329,8 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 | **Observability** | FlyteConsole for visualization; Kubernetes-native metrics |
 
 ### Apache Beam
+
+🔗 https://beam.apache.org/
 
 | Aspect | Details |
 |--------|---------|
