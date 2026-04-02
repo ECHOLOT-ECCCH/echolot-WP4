@@ -15,6 +15,7 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 | **API Accessibility** | REST API availability for programmatic access |
 | **State Management** | How workflow state is persisted and recovered |
 | **Observability** | Built-in monitoring, logging, alerting capabilities |
+| **Reproducibility** | Built-in provenance tracking, version control, reproducibility guarantees |
 
 ## Tools Under Review
 
@@ -309,6 +310,52 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 
 ---
 
+### 10. Galaxy Project
+
+🔗 https://galaxyproject.org/ | 🔗 https://usegalaxy.eu/ (European instance)
+
+| Aspect | Details |
+|--------|---------|
+| **License** | Academic License (permissive for academic use); custom restrictions for commercial |
+| **Programming Languages** | Python, R, and any language via Tool XML definitions; BioBlend API |
+| **Deployment** | Self-hosted (Docker/Kubernetes) or use public servers (usegalaxy.org, usegalaxy.eu, etc.) |
+| **Standards** | Tool Shed ecosystem; CWL support; GA4GH API; Standardized tool XML format |
+| **Adoption** | 1.8k GitHub stars; 400k+ registered users across public servers; massive in bioinformatics |
+| **Human in the Loop** | Limited - primarily batch-oriented workflows; manual intervention requires custom implementation |
+| **Development Activity** | Very active; 90k+ commits; regular releases (twice yearly); strong community |
+| **API Accessibility** | Full REST API; BioBlend (Python library); Tool Shed API |
+| **State Management** | PostgreSQL database; dataset-based history tracking |
+| **Observability** | Excellent - full provenance tracking, history UI, job monitoring |
+
+**Strengths:**
+- Exceptional reproducibility guarantees (complete provenance tracking)
+- Massive ecosystem of pre-built tools (10,000+ in Tool Shed)
+- Strong visualization and history tracking
+- Excellent for life sciences / bioinformatics
+- Multiple public servers available for immediate use
+- Active community with conferences (Galaxy Community Conference)
+
+**Weaknesses:**
+- Primarily designed for scientific/data analysis workflows, not general-purpose orchestration
+- Domain-specific focus makes it less suitable for general IT/infrastructure workflows
+- Tool development requires learning Galaxy's XML-based tool definition format
+- Limited native human-in-the-loop support for approval workflows
+- Commercial licensing may be a concern for non-academic use
+- Heavier weight than simpler workflow tools
+- Primarily job-based execution, not true DAG orchestration
+
+**European Instance (usegalaxy.eu):**
+- Hosted at University of Freiburg, Germany
+- Part of European Galaxy community and ELIXIR infrastructure
+- GDPR-compliant hosting available
+- Extensive training materials and documentation in European context
+- Connected to other European research infrastructure
+
+**Relevance to ECHOLOT:**
+Galaxy's core strengths (reproducibility, provenance tracking, visual workflow building) are directly relevant to ECHOLOT's goals of transparent, auditable data enrichment pipelines. However, Galaxy's bioinformatics focus and limited human-in-the-loop features make it less ideal than Kestra or Temporal for general-purpose wikibase enrichment workflows.
+
+---
+
 ## Additional Tools to Consider
 
 ### Flyte (Lyft)
@@ -362,6 +409,7 @@ ECHOLOT needs a solution for executing long running, complex pipelines that take
 | **n8n** | Custom | JS, Python | Self-hosted/Cloud | Yes | 181k | Very High | Low-code, AI integrations |
 | **Flyte** | Apache 2.0 | Python, Java, C++ | Self-hosted/Cloud | Yes | 9.6k | High | ML/data pipelines on K8s |
 | **Apache Beam** | Apache 2.0 | Java, Python, Go, SQL | Portable | Limited | 5k | Moderate | Portable batch/streaming |
+| **Galaxy** | Academic | Python, R, XML | Self-hosted/Cloud | Limited | 1.8k | Very High | Scientific workflows, reproducibility |
 
 ---
 
@@ -400,6 +448,7 @@ Based on ECHOLOT's requirements (workflow orchestration for automatic enrichment
 - **Dagster** excellent for data assets but more opinionated toward data engineering
 - **StackStorm** good for IT automation but less suited for data pipelines
 - **n8n** great for low-code but custom license may be a concern
+- **Galaxy** offers exceptional reproducibility/provenance but is domain-specific (bioinformatics) with limited general-purpose orchestration features; may be worth evaluating if reproducibility is the primary concern
 
 ### Deployment Considerations
 
