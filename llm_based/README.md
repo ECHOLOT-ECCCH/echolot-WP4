@@ -2,6 +2,12 @@
 
 This project retrieves and ranks candidate **Wikidata entities** for records from a knowledge base. Given an input entity (typically a person) and its metadata, the system performs lexical retrieval over Wikidata and resolves entity ambiguities to identify the correct Wikidata entity.
 
+<p>
+  <img src="images/NEL_echolot.png" alt="Pipeline" width="500">
+  <br>
+  <em>Overview of the proposed entity linking and reconciliation pipeline.</em>
+</p>
+
 ## Installation
 
 Install the required dependencies:
