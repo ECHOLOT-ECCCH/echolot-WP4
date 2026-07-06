@@ -1,0 +1,605 @@
+[
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1254",
+    "name": "Marta Amonarriz Ibarguen",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Mikroplastikoen eragina itsasoan: arrantza sektorearen kasua euskal autonomia erkidegoan",
+      "affiliation": "Enpresa Pribatua"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1255",
+    "name": "Estefania Calparsoro Forcada",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q58891232"
+    },
+    "information": {
+      "gender": "female",
+      "publication": [
+        "(2019) Erdi Aro eta Erdi Aro osteko buztingintzaren ikerketari buruzko metodologia transdiziplinarrak: Euskal eta Errioxar ekoizpenen azterketa arkeometrikoa",
+        "(2021) Ikerketa berregingarria analisi arkeometrikoan, kode irekia eta R"
+      ],
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1259",
+    "name": "Malake Mu\u00f1oz",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "affiliation": "Administrazio Publikoa"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1260",
+    "name": "Inma Zestau Baraibar",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "affiliation": "Administrazio Publikoa"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1261",
+    "name": "Idurre Zugazagasti Aja",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "affiliation": "Beste Erakundea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1262",
+    "name": "Ilaski Gainza Giraldo",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1264",
+    "name": "Miren Arantzeta P\u00e9rez",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q92464067"
+    },
+    "information": {
+      "gender": "female",
+      "affiliation": "Euskal Herriko Unibertsitatea",
+      "publication": [
+        "(2022) Afasia hiztun elebidunetan: ebidentzia zientifikotik praktika klinikora",
+        "(2021) Afasiaren diagnostikoa eta terapia pertsona elebidunetan: eraginkortasuna eztabaidan",
+        "(2025) Kode-alternantziak eta kognatuek sarbide lexikoa errazten dute elebidun osasuntsuetan, baina ez beti afasian: Kasu azterketa bat"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1265",
+    "name": "Estibaliz Rodriguez Nu\u00f1ez",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q130759789"
+    },
+    "information": {
+      "gender": "female",
+      "publication": "(2020) Familia-enpresen orientazio ekintzailea Mendebaldeko Saharan: testuinguruaren garrantzia",
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1268",
+    "name": "Arrate Alonso G\u00f3mez",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2020) Garraio elektrikoa",
+      "affiliation": "Mondragon Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1270",
+    "name": "Oihana Otaegi Madurga",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2020) Garraio elektrikoa",
+      "affiliation": "Vicomtech"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1271",
+    "name": "Maria del Carmen Echave Ota\u00f1o",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Gelatinan oinarritutako hiru dimentsiotako sistema egokituak hezur ehunen ingeniaritzarako"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1272",
+    "name": "Ainhoa Gonzalez Pujana",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q86592134"
+    },
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Zelula estromal mesenkimalen eragin inmunomodulatzailea sustatzeko bioinspiraturiko hiru dimentsiotako sistema funtzio anizdunak"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1275",
+    "name": "Jara Mendia Garc\u00eda",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q130759794"
+    },
+    "information": {
+      "gender": "female",
+      "publication": [
+        "(2021) Harrotasun morala: oinarrizko ikerketa eta hezkuntz-inplikazioak",
+        "(2019) Ba al dute erru sentimenduak, lotsak eta harrotasunak funtzio positiborik?"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1277",
+    "name": "Loreto Susperregi Zabalo",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2018) Eraldaketa indarra, industria behar sozialen paisaian",
+      "affiliation": "Administrazio Publikoa"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1280",
+    "name": "Nagore Ugarriza",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2020) Gentrifikazio prozesuen agerpenen azterketa",
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1283",
+    "name": "Idoia D\u00e1vila Uzkudun",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Hibridazio metodologiaren esperimentazioa euskarazko komunikabide batean",
+      "affiliation": "Mondragon Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1285",
+    "name": "Claudia Pichot",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Uholde-arriskua hezkuntzan: Batxilergoko ikasleen ezagutza eta pertzeptzioak eta ikasgelarako proposamen didaktikoa",
+      "affiliation": "Beste Erakundea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1286",
+    "name": "Ane D\u00edez",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Haurtzaroko sexu abusuak: prebentzio programa baten eraginkortasuna frogatzen",
+      "affiliation": "Eusko Jaurlaritza"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1287",
+    "name": "Ane Zald\u00faa Larraza",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Lehen Hezkuntzako irakurmen gaitasunaren azterketa: heziberriren eta ISEI/IVEI-ren proba diagnostikoen analisia eta proposamen metodologikoak",
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1288",
+    "name": "Uxue Zalbidea Olabarri",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": [
+        "(2019) Hizkuntza-eskakizunen egiaztatzegintza aztergai",
+        "(2021) Hizkuntza-eskakizunak funtzio eta atazen arabera",
+        "(2021) Hizkuntza-eskakizunak funtzio eta atazen arabera: Uliazpi"
+      ],
+      "affiliation": "Administrazio Publikoa"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1290",
+    "name": "Ainhoa Vazquez Villa",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Gernika 2037. Markak birsortzen espazio publikoan"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1291",
+    "name": "Ane Lekuona Mariscal",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": [
+        "(2021) Arteak euskal identitate 'bati' forma eman zionean. Kultur politikak, artearen historia eta generoa",
+        "(2021) Euskal Herriko artearen historia feminista baten bila. Genealogia berriak josten. 1950-1972",
+        "(2019) Euskal imajinario artistikoa genero-ikuspegi batetik. 1966-2016",
+        "(2021) Hitzen indarra: arte kritika, emakumeak zokoratzeko eragilea",
+        "(2025) Maitasunak ez du preziorik, nire lanak bai. Emakume artistak eta etxeko lanak. 1965-1975"
+      ],
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1292",
+    "name": "Maddi Barber Gutierrez",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Urpean lurra: Zuhaitzak, ametsak eta mapak"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1294",
+    "name": "Laura Alberdi Zumeta",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Eta hik ze uste dun/k? Azpeitiko gazteak hitanoaren inguruan hizketan: usteak, balioak eta diskurtsoak"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1297",
+    "name": "Ane Miren Barrutia Guenaga",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Santiago belarraren elkarrekintzak medikamentuekin"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1298",
+    "name": "Monserrat de Prada Perez",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Triaje egoki baten garrantzia anafilaxiaren identifikazio eta tratamenduan: kasu batzuei buruz",
+      "affiliation": "Osakidetza"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1300",
+    "name": "Marta Anda",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Triaje egoki baten garrantzia anafilaxiaren identifikazio eta tratamenduan: kasu batzuei buruz",
+      "affiliation": "Osakidetza"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1301",
+    "name": "Maria J. Alvarez Puebla",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Triaje egoki baten garrantzia anafilaxiaren identifikazio eta tratamenduan: kasu batzuei buruz"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1302",
+    "name": "Esozia Arroabarren Alem\u00e1n",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q92002473"
+    },
+    "information": {
+      "gender": "female",
+      "publication": "(2019) Triaje egoki baten garrantzia anafilaxiaren identifikazio eta tratamenduan: kasu batzuei buruz",
+      "affiliation": [
+        "Osakidetza",
+        "Administrazio Publikoa"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1303",
+    "name": "Goiatz Balziskueta Florez",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "female",
+      "publication": "(2018) Iktusa Farmaziaren ikuspegitik",
+      "affiliation": "Osakidetza"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1256",
+    "name": "Eneko Madrazo Uribeetxebarria",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q109527099"
+    },
+    "information": {
+      "gender": "male",
+      "publication": [
+        "(2020) Ura eta hirigintza. Paradigma-aldaketaren bidean hiri-uren kudeaketan",
+        "(2020) Baliabide eta instalazio hidraulikoen kudeaketa. Ariketa ebatziak. Ingeniaritza Zibileko Gradua",
+        "(2023) Hiri-lurzoruetako metalen eta metaloideen bioeskuragarritasunaren ebaluazioa",
+        "(2022) Zoladura iragazkorrak, hirietako drainatze-sarean txertaturiko elementu gisa",
+        "(2024) Hiri Drainatze Sistema Jasangarriak (HDSJ) eta haien eragina hirietako isurketa-uren kalitatean"
+      ],
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1257",
+    "name": "Koldo Tellitu Mejia",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Euskara indarberritzen jarraitzeko bide berriak, ikastolen ikuspegia"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1258",
+    "name": "Unai San Martin Los Arcos",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1263",
+    "name": "Gillen Martinez de la Hidalga Malla",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "affiliation": "Euskal Herriko Unibertsitatea",
+      "publication": [
+        "(2022) Perpaus iragangaitzen prozesamendua euskaraz eta gaztelaniaz elektrofisiologiaren argitan: hipotesi ezakusatiboa zertan den",
+        "(2021) Garunaren elektrofisiologia eta euskara"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1266",
+    "name": "Brahim Baba Yusuf",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q130759787"
+    },
+    "information": {
+      "gender": "male",
+      "publication": "(2020) Familia-enpresen orientazio ekintzailea Mendebaldeko Saharan: testuinguruaren garrantzia"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1267",
+    "name": "Unai Nu\u00f1ez Zabaleta",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q130759796"
+    },
+    "information": {
+      "gender": "male",
+      "publication": "(2020) Marketinaren filosofiaren eta artearen ikuspegi erromantikoaren arteko gatazka"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1269",
+    "name": "Gorka Hoyos Berastegi",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2020) Garraio elektrikoa",
+      "affiliation": "Enpresa Pribatua"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1273",
+    "name": "Mikel Odriozola Gimeno",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q91912994"
+    },
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Proteinak eta DNA Funtzio Katalitiko Zein Biologikoen Sustatzaile Gisa: Huisgenasetatik Kimioterapiara",
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1274",
+    "name": "Be\u00f1at Esnaola Zubeldia",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "affiliation": "Euskal Herriko Unibertsitatea",
+      "publication": [
+        "(2023) Errepresentazioen egibaldintzak: zerbaitez jardun eta zerbaiti buruzkoa izan",
+        "(2019) How Physics Makes Us Free (Jenann Ismael)"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1276",
+    "name": "Jon Zabala Arando",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q130759795"
+    },
+    "information": {
+      "gender": "male",
+      "publication": [
+        "(2021) Harrotasun morala: oinarrizko ikerketa eta hezkuntz-inplikazioak",
+        "(2019) Ba al dute erru sentimenduak, lotsak eta harrotasunak funtzio positiborik?",
+        "(2025) Bilkura kolektiboak bizitzaren erdigunean. Batasun emozionalaren eraginak gizarte kohesioan, ahalduntzean eta ongizatean"
+      ],
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1278",
+    "name": "Aritz Diez Oronoz",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": [
+        "(2020) Una Bella sfida formale tra Quattro e Cinquecento. Fortifikazioaren arkitektura-forma berri baten sortzea Berpizkundeko arkitektoen eskutik",
+        "(2020) \"Baratze bat nahi deizt egin... \" Baratze eta lorategi urbanoak Euskal Herriko hiribildu eta Bastidetan (XIV.-XIX. Mendeak): Tokiko produktu freskoak ekoiztea antzinako erregimenean",
+        "(2015) Eremu harresituaren hri-bizitza, hiri-espazioen Erdi Aroko izaera. Artaxoako eremu harresituaren berreskuratzea eta Erdi Aroaren Museoa"
+      ],
+      "affiliation": "Euskal Herriko Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1279",
+    "name": "Eneko del Amo Jimenez",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": [
+        "(2020) Bidasoko padura-ekosistemen antropizaziodinamikak 400 urtez. Herri-irlatik ghetto-eremura",
+        "(2020) \"Baratze bat nahi deizt egin... \" Baratze eta lorategi urbanoak Euskal Herriko hiribildu eta Bastidetan (XIV.-XIX. Mendeak): Tokiko produktu freskoak ekoiztea antzinako erregimenean"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1281",
+    "name": "Mikel Uralde Arrue",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Hibridazio metodologiaren esperimentazioa euskarazko komunikabide batean",
+      "affiliation": "Mondragon Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1282",
+    "name": "Garikoitz Rivera So\u00f1ora",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Hibridazio metodologiaren esperimentazioa euskarazko komunikabide batean",
+      "affiliation": "Mondragon Unibertsitatea"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1284",
+    "name": "Aritz Ruiz Gonz\u00e1lez",
+    "entity_type": "person",
+    "identifiers": {
+      "wikidata": "http://www.wikidata.org/entity/Q43084635"
+    },
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Uholde-arriskua hezkuntzan: Batxilergoko ikasleen ezagutza eta pertzeptzioak eta ikasgelarako proposamen didaktikoa",
+      "affiliation": [
+        "Udako Euskal Unibertsitatea",
+        "Euskal Herriko Unibertsitatea"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1289",
+    "name": "Alexander Martinez Iturria",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Zer ezkutatzen dute fikzioak eraikitako hiriek? Obaba, Gilead eta Rivendell"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1293",
+    "name": "Lander Mu\u00f1agorri Garmendia",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Zergatik kantatu euskaraz? euskal abeslarien hizkuntza hautua 2010eko hamarkadan. \"Izaro\", \"Huntza\" eta \"En tol Sarmiento\" musika taldeen kasuak"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1295",
+    "name": "Xabier Madorr\u00e1n de la Iglesia",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Teknologia berriak eta hizkuntza gutxituak: Ikt-en eragina euskaran"
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1296",
+    "name": "Jon Fernandez San Martin",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": [
+        "(2020) Pentsioen geroa. Eztabaida sozial baterako gakoak",
+        "(2019) Ondarroako nerabeen hizkuntza ohiturak sare sozialetan kode alternantzia eta erregistroak"
+      ]
+    }
+  },
+  {
+    "uri": "https://wikibase.inguma.eus/entity/Q1299",
+    "name": "Jorge \u00c1lvarez Garc\u00eda",
+    "entity_type": "person",
+    "identifiers": {},
+    "information": {
+      "gender": "male",
+      "publication": "(2019) Triaje egoki baten garrantzia anafilaxiaren identifikazio eta tratamenduan: kasu batzuei buruz",
+      "affiliation": "Osakidetza"
+    }
+  }
+]

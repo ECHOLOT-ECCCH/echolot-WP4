@@ -1,0 +1,4 @@
+tqdm
+requests
+openai
+python-dotenv
