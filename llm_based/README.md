@@ -8,14 +8,6 @@ This project retrieves and ranks candidate **Wikidata entities** for records fro
   <em>Overview of the proposed entity linking and reconciliation pipeline.</em>
 </p>
 
-## Installation
-
-Install the required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
 ---
 
 ## Usage
