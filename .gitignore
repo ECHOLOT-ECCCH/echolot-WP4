@@ -1,0 +1,4 @@
+rule_based/.venv/*
+.vscode/*
+rule_based/__pycache__
+.DS_Store
