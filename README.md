@@ -12,5 +12,6 @@ This repository contains some of the source code, documentation, and configurati
 In some cases, where appropriate,  the source code is stored in dedicated repositories.  
   
 **Connected repositories:**  
+- [echolot-T4.1-import-export](https://github.com/ECHOLOT-ECCCH/echolot-T4.1-import-export)
 - [echolot-WP4-prefect-flows](https://github.com/ECHOLOT-ECCCH/prefect-flows)
 - [echolot-WP4-workflow-engine](https://github.com/ECHOLOT-ECCCH/echolot-WP4-workflow-engine)
