@@ -15,3 +15,4 @@ In some cases, where appropriate,  the source code is stored in dedicated reposi
 - [echolot-T4.1-import-export](https://github.com/ECHOLOT-ECCCH/echolot-T4.1-import-export)
 - [echolot-WP4-prefect-flows](https://github.com/ECHOLOT-ECCCH/prefect-flows)
 - [echolot-WP4-workflow-engine](https://github.com/ECHOLOT-ECCCH/echolot-WP4-workflow-engine)
+- [gl-autodevops-minimal-port](https://github.com/ECHOLOT-ECCCH/gl-autodevops-minimal-port)
