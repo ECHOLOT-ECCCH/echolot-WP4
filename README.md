@@ -10,9 +10,14 @@ Work Package 4 (**WP4**) of the ECHOLOT project delivers AI-assisted, human-in-t
 
 This repository contains some of the source code, documentation, and configurations for WP4’s hybrid curation workflows.
 In some cases, where appropriate,  the source code is stored in dedicated repositories.  
-  
-**Connected repositories:**  
+
+## General Information about the issues in this repo
+
+The issues in this repository are only used for the roadmap in the ECHOLOT project. All technical issues are opend in the respective repositories.
+
+## Connected repositories:  
 - [echolot-T4.1-import-export](https://github.com/ECHOLOT-ECCCH/echolot-T4.1-import-export)
 - [echolot-WP4-prefect-flows](https://github.com/ECHOLOT-ECCCH/prefect-flows)
 - [echolot-WP4-workflow-engine](https://github.com/ECHOLOT-ECCCH/echolot-WP4-workflow-engine)
 - [gl-autodevops-minimal-port](https://github.com/ECHOLOT-ECCCH/gl-autodevops-minimal-port)
+
