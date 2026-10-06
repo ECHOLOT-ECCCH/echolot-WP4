@@ -19,6 +19,7 @@ import csv
 import datetime
 import json
 import re
+from shutil import copy
 import unicodedata
 
 from collections import defaultdict
@@ -72,7 +73,7 @@ def clean_international_text(text: str) -> str:
 
 
 def _purge_row(row: dict) -> dict:
-    """Strip whitespace and drop keys/values that are empty."""
+    """Strip whitespace and drop empty keys and values."""
     return {k.strip(): v.strip() for k, v in row.items() if k and v}
 
 
@@ -98,7 +99,7 @@ class PersonRecord:
 
     def __post_init__(self):
         s = self.fullname.strip('"')
-        if m := re.match(r'(.+), (.+)$', s):
+        if m := re.match(r'(.+),\s+(.+)$', s):
             # Apply format "Givenname Familyname"
             s = f'{m.group(2)} {m.group(1)}'
         self.fullname = s
@@ -124,12 +125,11 @@ class PersonRecord:
                 # estimated max age of 120 years
                 self.birth_year = self.death_year - 120
                 self.estimated_birth_year = True
-    
+
         if self.floruit_start:
             self.floruit_start = int(self.floruit_start)
         if self.floruit_end:
             self.floruit_end = int(self.floruit_end)
-
 
 
     def __repr__(self) -> str:
@@ -178,6 +178,10 @@ class RuleBasedMatcher:
         Minimum combined score (name similarity + year bonuses, max ≈ 4.0)
         that a candidate pair must reach to be included in the output.
         Defaults to ``1.99`` (requires at least a near-identical name match).
+    year_tolerance : int, optional
+        Maximum difference in years for birth/death dates to be considered a match.  Defaults to ``0`` (exact match only).
+    max_number_of_results : int, optional
+        Maximum number of matches to return for each source record.  If None (default) only the highest-ranking matches is returned.
     """
 
     def __init__(
@@ -187,13 +191,15 @@ class RuleBasedMatcher:
         use_soundex: bool = True,
         jaro_threshold: float = 0.9,
         score_threshold: float = 1.99,
-        year_tolerance: int = 0
+        year_tolerance: int = 0,
+        max_number_of_results: int = None
     ):
         self.sep = sep
         self.use_soundex = use_soundex
         self.jaro_threshold = jaro_threshold
         self.score_threshold = score_threshold
         self.year_tolerance = year_tolerance
+        self.max_number_of_results = max_number_of_results
         self._dst = textdistance.JaroWinkler()
 
         self._target_index: dict[tuple, list[PersonRecord]] = defaultdict(list)
@@ -357,10 +363,33 @@ class RuleBasedMatcher:
                 })
         bucket_key = self._blocking_id(record.matchlabel)
         candidates = set()
-
+        
         for target in self._target_index.get(bucket_key, []):
             if self._evaluate_match(record, target):
                 candidates.add(target)
+
+        if m := re.match(r'(.+)\s+(.+)\s+(.+)\s+(\S+)$', record.fullname):
+            for order in [(2,1,3,4), (1,2,4),(1,3,4),(2,3,4),(1,4),(2,4),(3,4)]:
+                record2 = PersonRecord(**{**{
+                        k: v for k, v in kwargs.items()
+                        if k in PersonRecord.__dataclass_fields__
+                    }, **{'fullname': ' '.join(m.group(i) for i in order if m.group(i))}})
+                bucket_key = self._blocking_id(record2.matchlabel)
+                for target in self._target_index.get(bucket_key, []):
+                    if self._evaluate_match(record2, target):
+                        # print(target)
+                        candidates.add(target)
+        elif m := re.match(r'(.+)\s+(.+)\s+(\S+)$', record.fullname):
+            for order in [(2,1,3),(2,3),(1,3)]:
+                record2 = PersonRecord(**{**{
+                        k: v for k, v in kwargs.items()
+                        if k in PersonRecord.__dataclass_fields__
+                    }, **{'fullname': ' '.join(m.group(i) for i in order if m.group(i))}})
+                bucket_key = self._blocking_id(record2.matchlabel)
+                for target in self._target_index.get(bucket_key, []):
+                    if self._evaluate_match(record2, target):
+                        # print(target)
+                        candidates.add(target)
 
         if not candidates:
             return record, []
@@ -379,14 +408,17 @@ class RuleBasedMatcher:
         if not scored:
             return record, []
 
-        # When the two top scores are virtually identical we keep both so
-        # the caller can decide how to handle the ambiguity.
-        if len(scored) > 1 and isclose(scored[0][0], scored[1][0]):
-            return record, scored
-            matches[record] = scored          # ambiguous — return all ties
+        if self.max_number_of_results is not None:
+            return record, scored[:self.max_number_of_results]
         else:
-            return record, [scored[0]]
-            matches[record] = [scored[0]]     # clear winner
+            # When the two top scores are virtually identical we keep both so
+            # the caller can decide how to handle the ambiguity.
+            if len(scored) > 1 and isclose(scored[0][0], scored[1][0]):
+                return record, scored
+                matches[record] = scored          # ambiguous — return all ties
+            else:
+                return record, [scored[0]]
+                matches[record] = [scored[0]]     # clear winner
 
 
     def match_file(
