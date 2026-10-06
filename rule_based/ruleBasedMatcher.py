@@ -22,7 +22,6 @@ import re
 import unicodedata
 
 from collections import defaultdict
-import dataclasses
 from dataclasses import dataclass, field
 from functools import lru_cache
 from math import isclose
@@ -91,7 +90,9 @@ class PersonRecord:
     wikidata: str = None
     ulan: str = None
     birth_year: Optional[int] = None
+    estimated_birth_year: bool = False
     death_year: Optional[int] = None
+    estimated_death_year: bool = False
     floruit_start: Optional[int] = None
     floruit_end: Optional[int] = None
 
@@ -106,13 +107,14 @@ class PersonRecord:
 
         self.wikidata = self.wikidata.strip('<>') if self.wikidata else None
         self.ulan = self.ulan.strip('<>') if self.ulan else None
-        
+    
         self.id = (self.id or '').strip('<>') or self.wikidata or self.ulan
         if self.birth_year:
             self.birth_year = int(self.birth_year)
             if not self.death_year:
                 # estimated max age of 120 years
                 self.death_year = self.birth_year + 120
+                self.estimated_death_year = True
         if self.death_year:
             self.death_year = int(self.death_year)
             # Ignore the future years used in Getty ULAN to approximate death years
@@ -121,7 +123,8 @@ class PersonRecord:
             elif not self.birth_year:
                 # estimated max age of 120 years
                 self.birth_year = self.death_year - 120
-        
+                self.estimated_birth_year = True
+    
         if self.floruit_start:
             self.floruit_start = int(self.floruit_start)
         if self.floruit_end:
@@ -131,7 +134,7 @@ class PersonRecord:
 
     def __repr__(self) -> str:
         years = (
-            f' ({self.birth_year or ""}–{self.death_year or ""})'
+            f' ({self.birth_year if self.birth_year and (not self.estimated_birth_year) else ""}–{self.death_year if self.death_year and (not self.estimated_death_year) else ""})'
             if self.birth_year or self.death_year
             else ''
         )
@@ -222,7 +225,7 @@ class RuleBasedMatcher:
                     k: v for k, v in row.items()
                     if k in PersonRecord.__dataclass_fields__
                 })
-                
+
                 key = self._blocking_id(record.matchlabel)
                 self._target_index[key].append(record)
                 count += 1
@@ -255,12 +258,15 @@ class RuleBasedMatcher:
             return False
         if a.birth_year and b.death_year and a.birth_year >= b.death_year:
             return False
-        if a.floruit_end and b.birth_year and a.floruit_end <= b.birth_year+20:
-            return False
+        if a.floruit_end:
+            if b.birth_year and a.floruit_end <= b.birth_year+20:
+                return False
+            if b.death_year and a.floruit_end >= b.death_year+self.year_tolerance:
+                return False
         if a.floruit_start:
             if b.death_year and a.floruit_start >= b.death_year:
                 return False
-            if b.birth_year and a.floruit_start <= b.birth_year+20:
+            if b.birth_year and a.floruit_start <= b.birth_year+12:
                 return False
         if a.matchlabel == b.matchlabel:
             return True
@@ -273,7 +279,7 @@ class RuleBasedMatcher:
         Compute a numeric confidence score for a candidate pair.
         Name similarity contributes up to 2.0; each matching year adds 1.0.
         """
-        score = self._dst(a.fullname, b.fullname) + self._dst(a.matchlabel, b.matchlabel)
+        score = float(self._dst(a.fullname, b.fullname)) + float(self._dst(a.matchlabel, b.matchlabel))
         if a.birth_year and a.birth_year == b.birth_year:
             score += 1.0
         if a.death_year and a.death_year == b.death_year:
@@ -341,6 +347,9 @@ class RuleBasedMatcher:
     # ------------------------------------------------------------------
 
     def match_record(self, **kwargs) -> dict[PersonRecord, list[tuple[float, PersonRecord]]]:
+        """
+        Match a single record against the target dataset.
+        """
         matches: dict[PersonRecord, list[tuple[float, PersonRecord]]] = {}
         record = PersonRecord(**{
                     k: v for k, v in kwargs.items()
