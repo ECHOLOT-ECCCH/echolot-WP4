@@ -19,13 +19,12 @@ import csv
 import datetime
 import json
 import re
-from shutil import copy
 import unicodedata
 
 from collections import defaultdict
 from dataclasses import dataclass, field
 from functools import lru_cache
-from math import isclose
+from math import ceil, isclose
 from pathlib import Path
 from typing import Optional
 
@@ -190,7 +189,7 @@ class RuleBasedMatcher:
         sep: str = '\t',
         use_soundex: bool = True,
         jaro_threshold: float = 0.9,
-        score_threshold: float = 1.99,
+        score_threshold: float = 0.9,
         year_tolerance: int = 0,
         max_number_of_results: int = None
     ):
@@ -286,10 +285,17 @@ class RuleBasedMatcher:
         Name similarity contributes up to 2.0; each matching year adds 1.0.
         """
         score = float(self._dst(a.fullname, b.fullname)) + float(self._dst(a.matchlabel, b.matchlabel))
-        if a.birth_year and a.birth_year == b.birth_year:
-            score += 1.0
-        if a.death_year and a.death_year == b.death_year:
-            score += 1.0
+        
+        if a.birth_year and b.birth_year:
+            # exact years +1, one year difference +0.5, two years difference +0.33, etc.
+            score += 1.0/(1.0 + abs(a.birth_year - b.birth_year))
+        elif not a.birth_year:
+            score += 0.9
+        
+        if a.death_year and b.death_year:
+            score += 1.0/(1.0 + abs(a.death_year - b.death_year))
+        elif not a.death_year:
+            score += 0.9
         return score
 
     def _parse_source_csv(self, path: Path) -> list[PersonRecord]:
@@ -369,11 +375,13 @@ class RuleBasedMatcher:
                 candidates.add(target)
 
         if m := re.match(r'(.+)\s+(.+)\s+(.+)\s+(\S+)$', record.fullname):
+            """Try different permutations of the name components to find more matches."""
             for order in [(2,1,3,4), (1,2,4),(1,3,4),(2,3,4),(1,4),(2,4),(3,4)]:
                 record2 = PersonRecord(**{**{
                         k: v for k, v in kwargs.items()
                         if k in PersonRecord.__dataclass_fields__
-                    }, **{'fullname': ' '.join(m.group(i) for i in order if m.group(i))}})
+                    },
+                    **{'fullname': ' '.join(m.group(i) for i in order if m.group(i))}})
                 bucket_key = self._blocking_id(record2.matchlabel)
                 for target in self._target_index.get(bucket_key, []):
                     if self._evaluate_match(record2, target):
@@ -399,8 +407,9 @@ class RuleBasedMatcher:
             for t in candidates
         ]
         # Keep only pairs above the score threshold
+        score_max = 4 # ceil(scored[0][0]) if scored else 1.0
         scored = sorted(
-            ((s, t) for s, t in scored if s > self.score_threshold),
+            ((s/score_max, t) for s, t in scored if s/score_max >= self.score_threshold),
             key=lambda x: x[0],
             reverse=True,
         )
@@ -415,10 +424,10 @@ class RuleBasedMatcher:
             # the caller can decide how to handle the ambiguity.
             if len(scored) > 1 and isclose(scored[0][0], scored[1][0]):
                 return record, scored
-                matches[record] = scored          # ambiguous — return all ties
+                # ambiguous — return all ties
             else:
                 return record, [scored[0]]
-                matches[record] = [scored[0]]     # clear winner
+                # clear winner
 
 
     def match_file(
