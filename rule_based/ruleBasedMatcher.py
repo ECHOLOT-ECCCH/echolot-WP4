@@ -22,7 +22,7 @@ import re
 import unicodedata
 
 from collections import defaultdict
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, fields
 from functools import lru_cache
 from math import ceil, isclose
 from pathlib import Path
@@ -107,7 +107,7 @@ class PersonRecord:
 
         self.wikidata = self.wikidata.strip('<>') if self.wikidata else None
         self.ulan = self.ulan.strip('<>') if self.ulan else None
-    
+
         self.id = (self.id or '').strip('<>') or self.wikidata or self.ulan
         if self.birth_year:
             self.birth_year = int(self.birth_year)
@@ -131,23 +131,78 @@ class PersonRecord:
             self.floruit_end = int(self.floruit_end)
 
 
-    def __repr__(self) -> str:
+    def screen_name(self) -> str:
+        """Return human-readable label following the format:
+        "<First name> <Middle name> <Family name> (<Birth year>-<Death year>)"
+        or 
+        "<First name> <Middle name> <Family name> (<Floruit start>-<Floruit end>)"
+        """
         years = (
-            f' ({self.birth_year if self.birth_year and (not self.estimated_birth_year) else ""}–{self.death_year if self.death_year and (not self.estimated_death_year) else ""})'
-            if self.birth_year or self.death_year
-            else ''
-        )
+                    f' ({self.birth_year if self.birth_year and (not self.estimated_birth_year) else ""}–{self.death_year if self.death_year and (not self.estimated_death_year) else ""})'
+                    if self.birth_year or self.death_year
+                    else ''
+                )
         floruit = (
             f' (fl. {self.floruit_start or ""}–{self.floruit_end or ""})'
             if self.floruit_start or self.floruit_end
             else ''
         )
+        return self.fullname + (years or floruit)
+    
+    def __repr__(self) -> str:
+        """Screen name concatenated with possible Wikidata and ULAN URLs.
+        """
         links = (
             (f' <{self.id}>' if self.id else '') +
             (f' <{self.wikidata}>' if self.wikidata and self.wikidata != self.id else '') +
             (f' <{self.ulan}>' if self.ulan else '')
         )
-        return self.fullname + (years or floruit) + links
+        return self.screen_name() + links
+    
+    def to_result_json(self, probability:float=None) -> dict:
+        """Convert to JSON for output following formatting:
+        {
+            "QID": "Q130759789",
+            "snippet": "researcher",
+            "description": {
+                "name": "Estibaliz Rodriguez Nuñez",
+                "alias": [
+                "Estibaliz Rodriguez Nuñez"
+                ],
+                "info": {
+                    "description": "researcher",
+                    "birth_date": null,
+                    "death_date": null,
+                    "nationality": [""],
+                    "occupation": [
+                        "researcher"
+                    ],
+                    "gender": "female",
+                    "birth_place": "",
+                    "image": null
+                }
+            }
+        """
+        info = {"image": None}
+        if s := self.birth_year:
+            info['birth_date'] = s
+        if s := self.death_year:
+            info['death_date'] = s
+        if s := self.gender:
+            info['gender'] = s
+                    
+        description = {
+            "name": self.fullname,
+            "alias": self.screen_name(),
+            "info": info
+            }
+        
+        quid = re.sub(r'^.+/([^/]+)$', r'\1', self.wikidata or self.ulan or '')
+        dc =  {'QUID': quid or None,
+                'description': description}
+        if probability:
+            dc['probability'] = probability
+        return dc
 
 
 # ---------------------------------------------------------------------------
@@ -228,7 +283,7 @@ class RuleBasedMatcher:
                     continue
                 record = PersonRecord(**{
                     k: v for k, v in row.items()
-                    if k in PersonRecord.__dataclass_fields__
+                    if k in {item.name for item in fields(PersonRecord) if item.init}
                 })
 
                 key = self._blocking_id(record.matchlabel)
@@ -304,6 +359,7 @@ class RuleBasedMatcher:
         sep = ',' if suffix == '.csv' else '\t'
 
         records = []
+        record_fields = {f.name for f in fields(PersonRecord) if f.init}
         with open(path, newline='', encoding='utf-8') as fh:
             reader = csv.DictReader(fh, delimiter=sep)
             for raw_row in reader:
@@ -311,7 +367,7 @@ class RuleBasedMatcher:
                 if row.get('fullname'):
                     record = {
                         k: v for k, v in row.items()
-                        if k in PersonRecord.__dataclass_fields__
+                        if k in record_fields
                     }
                     records.append(record)
         print(path, len(records), sep)
@@ -361,11 +417,42 @@ class RuleBasedMatcher:
     def match_record(self, **kwargs) -> dict[PersonRecord, list[tuple[float, PersonRecord]]]:
         """
         Match a single record against the target dataset.
+
+        Output format:
+        ```
+        "chosen_id": "Q130759789",
+        "retrieval_results": [
+            {
+            "QID": "Q130759789",
+            "snippet": "researcher",
+            "description": {
+                "name": "Estibaliz Rodriguez Nuñez",
+                "alias": [
+                "Estibaliz Rodriguez Nuñez"
+                ],
+                "info": {
+                "description": "researcher",
+                "birth_date": null,
+                "death_date": null,
+                "nationality": [""],
+                "occupation": [
+                    "researcher"
+                ],
+                "gender": "female",
+                "birth_place": "",
+                "image": null
+                }
+            }
+            },
+            {
+            "QID": "Q126809450", ...
+        ```
         """
         matches: dict[PersonRecord, list[tuple[float, PersonRecord]]] = {}
+        person_record_fields = {record_field.name for record_field in fields(PersonRecord)}
         record = PersonRecord(**{
                     k: v for k, v in kwargs.items()
-                    if k in PersonRecord.__dataclass_fields__
+                    if k in person_record_fields
                 })
         bucket_key = self._blocking_id(record.matchlabel)
         candidates = set()
@@ -375,11 +462,11 @@ class RuleBasedMatcher:
                 candidates.add(target)
 
         if m := re.match(r'(.+)\s+(.+)\s+(.+)\s+(\S+)$', record.fullname):
-            """Try different permutations of the name components to find more matches."""
+            # Try different permutations of the name components to find more matches
             for order in [(2,1,3,4), (1,2,4),(1,3,4),(2,3,4),(1,4),(2,4),(3,4)]:
                 record2 = PersonRecord(**{**{
                         k: v for k, v in kwargs.items()
-                        if k in PersonRecord.__dataclass_fields__
+                    if k in person_record_fields
                     },
                     **{'fullname': ' '.join(m.group(i) for i in order if m.group(i))}})
                 bucket_key = self._blocking_id(record2.matchlabel)
@@ -391,7 +478,7 @@ class RuleBasedMatcher:
             for order in [(2,1,3),(2,3),(1,3)]:
                 record2 = PersonRecord(**{**{
                         k: v for k, v in kwargs.items()
-                        if k in PersonRecord.__dataclass_fields__
+                    if k in person_record_fields
                     }, **{'fullname': ' '.join(m.group(i) for i in order if m.group(i))}})
                 bucket_key = self._blocking_id(record2.matchlabel)
                 for target in self._target_index.get(bucket_key, []):
@@ -400,12 +487,10 @@ class RuleBasedMatcher:
                         candidates.add(target)
 
         if not candidates:
-            return record, []
+            return {"chosen_id": None,  "retrieval_results": []}
 
-        scored = [
-            (self._evaluate_score(record, t), t)
-            for t in candidates
-        ]
+        scored = [(self._evaluate_score(record, t), t) for t in candidates]
+
         # Keep only pairs above the score threshold
         score_max = 4 # ceil(scored[0][0]) if scored else 1.0
         scored = sorted(
@@ -415,19 +500,32 @@ class RuleBasedMatcher:
         )
 
         if not scored:
-            return record, []
+            return {"chosen_id": None,
+                    "retrieval_results": []}
+
+        retrieval_results = []
 
         if self.max_number_of_results is not None:
-            return record, scored[:self.max_number_of_results]
+            retrieval_results = [ob.to_result_json(score) for score, ob in scored[:self.max_number_of_results]]
+        
         else:
             # When the two top scores are virtually identical we keep both so
             # the caller can decide how to handle the ambiguity.
             if len(scored) > 1 and isclose(scored[0][0], scored[1][0]):
-                return record, scored
                 # ambiguous — return all ties
+                retrieval_results = [ob.to_result_json(score) for score, ob in scored[:self.max_number_of_results]]
             else:
-                return record, [scored[0]]
                 # clear winner
+                retrieval_results = [ob.to_result_json(score) for score, ob in scored[:1]]
+
+        chosen_id = None
+        for ob in retrieval_results:
+            # get first match
+            chosen_id = ob['QUID']
+            break
+
+        return {"chosen_id": chosen_id, "retrieval_results": retrieval_results}
+        
 
 
     def match_file(
@@ -455,13 +553,12 @@ class RuleBasedMatcher:
             source_records = self._parse_source_json(path)
         else:
             source_records = self._parse_source_csv(path)
-
+        
         matches: dict[PersonRecord, list[tuple[float, PersonRecord]]] = {}
 
         for record in source_records:
-            key, arr = self.match_record(**record)
-            if arr:
-                matches[key] = arr
+            if res := self.match_record(**record):
+                matches[record.get('id') or record.get('wikidata') or record.get('ulan')] = res
 
         return matches
     
