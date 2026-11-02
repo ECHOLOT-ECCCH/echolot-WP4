@@ -20,7 +20,7 @@ The issues in this repository are only used for the roadmap in the ECHOLOT proje
 - [echolot-WP4-prefect-flows](https://github.com/ECHOLOT-ECCCH/prefect-flows)
 - [echolot-WP4-workflow-engine](https://github.com/ECHOLOT-ECCCH/echolot-WP4-workflow-engine)
 - [gl-autodevops-minimal-port](https://github.com/ECHOLOT-ECCCH/gl-autodevops-minimal-port)
-- [echolot-wp4-api-services] (https://github.com/ECHOLOT-ECCCH/echolot-wp4-api-service)
-- [echolot-wp4-agentic-app] (https://github.com/ECHOLOT-ECCCH/echolot-wp4-agentic-app)
-- [echolot-T4.4-openrouter-tests] (https://github.com/ECHOLOT-ECCCH/echolot-T4.4-openrouter-tests)
+- [echolot-wp4-api-services](https://github.com/ECHOLOT-ECCCH/echolot-wp4-api-service)
+- [echolot-wp4-agentic-app](https://github.com/ECHOLOT-ECCCH/echolot-wp4-agentic-app)
+- [echolot-T4.4-openrouter-tests](https://github.com/ECHOLOT-ECCCH/echolot-T4.4-openrouter-tests)
 
